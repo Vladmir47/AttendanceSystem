@@ -61,5 +61,70 @@
         }
         ?>
     </div>
+
+
+    <div class="container">
+    <h2>View Attendance History</h2>
+    <form method="get" action="mark_attendance.php">
+        <label for="filter_by">Filter By:</label>
+        <select name="filter_by" id="filter_by" required>
+            <option value="student">Student Name</option>
+            <option value="date">Date</option>
+        </select>
+        <div id="filter_value_container">
+            <label for="filter_value">Value:</label>
+            <input type="text" name="filter_value" id="filter_value" placeholder="Enter Student Name or Date (YYYY-MM-DD)" required>
+        </div>
+        <button type="submit">View History</button>
+    </form>
+
+    <?php
+    if (isset($_GET['filter_by']) && isset($_GET['filter_value'])) {
+        $filter_by = $_GET['filter_by'];
+        $filter_value = $_GET['filter_value'];
+
+        // SQL query based on filter type
+        if ($filter_by === 'student') {
+            $result = $conn->query("SELECT attendance.*, students.name, students.course 
+                                FROM attendance 
+                                JOIN students ON attendance.student_id = students.id 
+                                WHERE students.name LIKE '%$filter_value%' 
+                                ORDER BY attendance.date DESC");
+            $filter_label = "Attendance History for Student: $filter_value";
+        } else if ($filter_by === 'date') {
+            $result = $conn->query("SELECT attendance.*, students.name, students.course 
+                                FROM attendance 
+                                JOIN students ON attendance.student_id = students.id 
+                                WHERE attendance.date = '$filter_value' 
+                                ORDER BY students.name ASC");
+            $filter_label = "Attendance on Date: $filter_value";
+        }
+
+        echo "<h3>$filter_label</h3>";
+        if ($result->num_rows > 0) {
+            echo "<table>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Course</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                    </tr>";
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>
+                        <td>{$row['name']}</td>
+                        <td>{$row['course']}</td>
+                        <td>{$row['status']}</td>
+                        <td>{$row['date']}</td>
+                    </tr>";
+            }
+            echo "</table>";
+        } else {
+            echo "<p>No attendance records found.</p>";
+        }
+    }
+    ?>
+</div>
+
+
 </body>
 </html>

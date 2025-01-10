@@ -5,6 +5,11 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/script.js"></script>
     <title>Attendance Reports</title>
+    <style>
+        .highlight {
+            background-color: yellow; /* Highlight color for students with < 75% attendance */
+        }
+    </style>
 </head>
 <body>
 
@@ -23,42 +28,12 @@
     <h2>Students Attendance</h2>
     <table>
         <tr>
-            <!-- <th>ID</th> -->
-            <th>Name</th>
-            <th>Course</th>
-            <th>Action</th>
-            
-        </tr>
-        <?php
-        $result = $conn->query("SELECT *,
-                                (SELECT attendance.student_id 
-                                    FROM attendance 
-                                    WHERE attendance.student_id = students.id LIMIT 1) AS std_id
-                                FROM students");
-                                
-        while ($row = $result->fetch_assoc()) {
-        //    <td>{$row['id']}</td>  was removed from below
-            echo "
-                <tr>
-                    <td>{$row['name']}</td>
-                    <td>{$row['course']}</td>
-                    <td><a href='delete_attendance.php?id={$row['id']}' onclick='return confirmDelete();'>Delete</a></td>
-                </tr>";
-        }
-        ?>
-    </table>
-</div>
-
-<div class="container">
-    <h2>Students with Attendance Below 75%</h2>
-    <table>
-        <tr>
-            <!-- <th>ID</th> -->
             <th>Name</th>
             <th>Course</th>
             <th>Classes Attended</th>
             <th>Total Classes</th>
             <th>Attendance (%)</th>
+            <th>Action</th>
         </tr>
         <?php
         // Fetch students and their attendance records
@@ -76,19 +51,18 @@
                 $attendance_percentage = ($row['classes_attended'] / $row['total_classes']) * 100;
             }
 
-            // Display students with attendance below 75%
-            // <td>{$row['id']}</td> was removed from below
+            // Determine row class based on attendance percentage
+            $row_class = $attendance_percentage < 75 ? 'highlight' : '';
 
-            if ($attendance_percentage < 75) {
-                echo "<tr>
-                    
-                    <td>{$row['name']}</td>
-                    <td>{$row['course']}</td>
-                    <td>{$row['classes_attended']}</td>
-                    <td>{$row['total_classes']}</td>
-                    <td>" . number_format($attendance_percentage, 2) . "%</td>
-                </tr>";
-            }
+            // Display student information in the table
+            echo "<tr class='$row_class'>
+                <td>{$row['name']}</td>
+                <td>{$row['course']}</td>
+                <td>{$row['classes_attended']}</td>
+                <td>{$row['total_classes']}</td>
+                <td>" . number_format($attendance_percentage, 2) . "%</td>
+                <td><a href='delete_attendance.php?id={$row['id']}' onclick='return confirmDelete();'>Delete</a></td>
+            </tr>";
         }
         ?>
     </table>
