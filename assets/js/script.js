@@ -24,6 +24,5 @@ function confirmDelete() {
     return confirm("Are you sure you want to delete this information?");
 }
 
-function confirmDelete() {
-    return confirm("Are you sure you want to delete this information?");
-}
+// Run the function on page load to handle pre-selected filters
+window.onload = toggleFilterValue;
