@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2025 at 11:52 PM
+-- Generation Time: Jan 23, 2025 at 12:45 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -36,30 +36,6 @@ CREATE TABLE `attendance` (
   `class_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `attendance`
---
-
-INSERT INTO `attendance` (`id`, `student_id`, `date`, `status`, `class_id`) VALUES
-(62, 20, '2025-01-14', 'Present', 11),
-(63, 18, '2025-01-14', 'Present', 12),
-(64, 20, '2025-01-14', 'Present', 12),
-(65, 18, '2025-01-14', 'Absent', 13),
-(66, 20, '2025-01-14', 'Present', 13),
-(67, 18, '2025-01-14', 'Present', 13),
-(68, 20, '2025-01-14', 'Absent', 13),
-(70, 20, '2025-01-14', 'Present', 14),
-(71, 18, '2025-01-15', 'Absent', 13),
-(72, 20, '2025-01-15', 'Present', 13),
-(73, 18, '2025-01-14', 'Present', 12),
-(74, 20, '2025-01-14', 'Present', 12),
-(75, 18, '2025-01-14', 'Present', 12),
-(76, 20, '2025-01-14', 'Present', 12),
-(77, 18, '2025-01-14', 'Present', 12),
-(78, 20, '2025-01-14', 'Present', 12),
-(79, 18, '2025-01-14', 'Present', 12),
-(80, 20, '2025-01-14', 'Present', 12);
-
 -- --------------------------------------------------------
 
 --
@@ -71,16 +47,6 @@ CREATE TABLE `classes` (
   `name` varchar(255) NOT NULL,
   `teacher_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `classes`
---
-
-INSERT INTO `classes` (`id`, `name`, `teacher_id`) VALUES
-(11, 'Digital Electronics', NULL),
-(12, 'Data Structures and Algorithms', NULL),
-(13, 'Data Communication', NULL),
-(14, 'Database Technologies', NULL);
 
 -- --------------------------------------------------------
 
@@ -95,15 +61,6 @@ CREATE TABLE `students` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `students`
---
-
-INSERT INTO `students` (`id`, `name`, `course`, `created_at`) VALUES
-(18, 'John Jackson', 'IT', '2025-01-14 20:43:30'),
-(19, 'Anne Hans', 'IT', '2025-01-14 20:44:05'),
-(20, 'Vladmir  Boniface', 'Computer Science', '2025-01-14 20:45:03');
-
 -- --------------------------------------------------------
 
 --
@@ -115,19 +72,6 @@ CREATE TABLE `student_classes` (
   `student_id` int(11) NOT NULL,
   `class_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `student_classes`
---
-
-INSERT INTO `student_classes` (`id`, `student_id`, `class_id`) VALUES
-(11, 18, 12),
-(12, 18, 13),
-(13, 19, 14),
-(14, 20, 11),
-(15, 20, 12),
-(16, 20, 13),
-(17, 20, 14);
 
 -- --------------------------------------------------------
 
@@ -141,14 +85,6 @@ CREATE TABLE `teachers` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `teachers`
---
-
-INSERT INTO `teachers` (`id`, `name`, `email`, `password`) VALUES
-(1, 'John Jackson', 'john@gmail.com', '$2y$10$elJ75bL6SDvfFKBc2KIWEuMTrXSDiuREY97P22lxsLaXHQp3jjFam'),
-(2, 'Fatma Kombo', 'fatmakombo@gmail.com', '$2y$10$pb/B24aoGIZi3d720KBXReREfIQXFSXkLp0Ad94moWTI8UdWniHZ.');
 
 --
 -- Indexes for dumped tables
@@ -198,31 +134,31 @@ ALTER TABLE `teachers`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `student_classes`
 --
 ALTER TABLE `student_classes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
