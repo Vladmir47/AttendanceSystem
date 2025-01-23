@@ -26,3 +26,16 @@ function confirmDelete() {
 
 // Run the function on page load to handle pre-selected filters
 window.onload = toggleFilterValue;
+
+function showNotification(message, type) {
+    const notification = document.getElementById("notification");
+    notification.innerText = message;
+
+    // Set the type of message (success, error, info, warning)
+    notification.className = `notification ${type} show`;
+
+    // Automatically hide the notification after 3 seconds
+    setTimeout(() => {
+        notification.className = "notification"; // Reset to default
+    }, 3000);
+}
