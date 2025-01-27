@@ -2,7 +2,7 @@
 $host = 'localhost';
 $user = 'root';
 $password = '';
-$database = 'attendance_system';
+$database = 'attendance_sys';
 
 $conn = new mysqli($host, $user, $password, $database);
 

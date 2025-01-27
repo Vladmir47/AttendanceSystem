@@ -17,8 +17,9 @@
 
 <!-- Notification Container -->
 <div id="notification" class="notification"></div>
-
+<header>
     <h1>Create a New Class</h1>
+</header>
     <form method="POST" action="create_class.php">
         <label for="class_name">Class Name:</label>
         <input type="text" id="class_name" name="class_name" required><br>

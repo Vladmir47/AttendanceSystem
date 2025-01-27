@@ -17,21 +17,24 @@ header {
 
 /* Navigation menu */
 nav {
+    width: 230px;
+    height: 100vh; /* Full height */
     background-color: #333;
-    padding: 10px;
-    text-align: center;
-    overflow: hidden;
+    position: fixed; /* Keep it fixed on the left */
+    top: 0;
+    left: 0;
+    overflow-y: auto; /* Allow scrolling for long menus */
+    padding: 10px 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+
 }
 
 nav a {
-    float: left;
     display: block;
     color: white;
-    text-align: center;
-    padding: 14px 20px;
     text-decoration: none;
+    padding: 15px 20px;
     font-size: 16px;
-    margin: 0 15px;
 }
 
 nav a:hover {
@@ -40,8 +43,8 @@ nav a:hover {
 }
 /* Container and content */
 .container {
-    width: 80%;
-    margin: 0 auto;
+    width: 78%;
+    margin-left: 270px;
     padding: 20px;
     background-color: white;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -112,11 +115,14 @@ table th {
 
 /* Header styles */
 header {
+    width: 78%;
+    margin-left: 270px;
     background-color: #009688;
     color: white;
     padding: 20px;
     text-align: center;
     margin-bottom: 30px;
+    border-radius: 8px;
 }
 
 h1 {

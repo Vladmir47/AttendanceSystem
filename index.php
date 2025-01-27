@@ -9,14 +9,14 @@
 <body>
 
 <!-- Navigation Bar -->
-<nav>
-    <a class="active" href="index.php">Home</a>
-    <a href="create_class.php">Create Class</a>
-    <a href="add_student.php">Add Student</a>
-    <a href="view_students.php">View Students</a>
-    <a href="mark_attendance.php">Mark Attendance</a>
-    <a href="view_attendance.php">View Attendance Reports</a>
-</nav>
+    <nav>
+        <a class="active" href="index.php">Home</a>
+        <a href="create_class.php">Create Class</a>
+        <a href="add_student.php">Add Student</a>
+        <a href="view_students.php">View Students</a>
+        <a href="mark_attendance.php">Mark Attendance</a>
+        <a href="view_attendance.php">View Attendance Reports</a>
+    </nav>
 
 <!-- Header Section -->
 <header>
