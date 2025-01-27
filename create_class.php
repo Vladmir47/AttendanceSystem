@@ -8,7 +8,7 @@
 <body>
 <nav>
     <a href="index.php">Home</a>
-    <a href="create_class.php">Create class</a>
+    <a class="active" href="create_class.php">Create class</a>
     <a href="add_student.php">Add Student</a>
     <a href="view_students.php">View Students</a>
     <a href="mark_attendance.php">Mark Attendance</a>
