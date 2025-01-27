@@ -17,7 +17,7 @@ header {
 
 /* Sidebar Styling */
 .sidebar {
-    width: 230px;
+    width: 220px;
     height: 100vh;
     background-color: #333;
     position: fixed;
@@ -36,7 +36,7 @@ header {
 
 /* Navigation menu */
 nav {
-    width: 230px;
+    width: 210px;
     height: 100vh; /* Full height */
     background-color: #333;
     position: fixed; /* Keep it fixed on the left */
@@ -102,7 +102,7 @@ nav.collapsed {
 /* Container and content */
 .container {
     width: 78%;
-    margin-left: 270px;
+    margin-left: 250px;
     padding: 20px;
     background-color: white;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -111,7 +111,7 @@ nav.collapsed {
 }
 
 .container.collapsed {
-    margin-left: 220px; /* Adjust content when sidebar is collapsed */
+    margin-left: 170px; /* Adjust content when sidebar is collapsed */
 }
 
 h2 {
@@ -178,7 +178,7 @@ table th {
 /* Header styles */
 header {
     width: 78%;
-    margin-left: 270px;
+    margin-left: 250px;
     background-color: #009688;
     color: white;
     padding: 20px;
@@ -190,7 +190,7 @@ header {
 }
 
 header.collapsed {
-    margin-left: 220px;
+    margin-left: 170px;
 }
 
 h1 {
@@ -200,27 +200,21 @@ h1 {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    #menu-icon {
-        left: 10px; /* Stay in the same position */
-    }
-    nav {
-        transform: translateX(-230px); /* Hide sidebar by default */
-        font-size: 14px;
-    }
     
     header h1 {
         font-size: 28px;
     }
     
     header, .container {
-        margin-left: 0;
-        /* width: 95%; */
+        margin-left: 0px;
+        width: 95%;
     }
 
-    .container,
-    header {
-        margin-left: 40px;
+    header.collapsed, .container.collapsed {
+        margin-left: 0px; /* Adjust content when sidebar is collapsed */
     }
+
+   
 }
 
 /* Notification container */
