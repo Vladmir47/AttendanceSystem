@@ -15,6 +15,25 @@ header {
     text-align: center;
 }
 
+/* Sidebar Styling */
+.sidebar {
+    width: 230px;
+    height: 100vh;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    padding: 10px 0;
+    padding-top: 60px; /* Push links below the menu icon */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s;
+}
+
+.sidebar.collapsed {
+    transform: translateX(-230px); /* Hide the sidebar */
+}
+
 /* Navigation menu */
 nav {
     width: 230px;
@@ -26,7 +45,8 @@ nav {
     overflow-y: auto; /* Allow scrolling for long menus */
     padding: 10px 0;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-
+    transform: translateX(0); /* Initially visible */
+    transition: transform 0.3s ease;
 }
 
 nav a {
@@ -37,16 +57,48 @@ nav a {
     font-size: 16px;
 }
 
-.active {
+.active,nav a:hover {
     background-color: #ff9900;
     color: white;
   }
   
-
-nav a:hover {
-    background-color: #ff9900;
-    color: black;
+nav.collapsed {
+    transform: translateX(-230px); /* Hide sidebar */
 }
+/* Menu Icon Styling */
+.menu-container {
+    display: inline-block;
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000; /* Keep it on top */
+}
+.bar {
+    width: 35px;
+    height: 5px;
+    background-color: #2da80b;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.menu-container.change .bar1 {
+    transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.menu-container.change .bar2 {
+    opacity: 0;
+}
+
+.menu-container.change .bar3 {
+    transform: rotate(45deg) translate(-8px, -8px);
+}
+
+/* Ensure the menu icon remains visible even when the sidebar is collapsed */
+#menu-icon.collapsed {
+    left: 10px; /* Maintain position when sidebar is hidden */
+}
+
 /* Container and content */
 .container {
     width: 78%;
@@ -55,8 +107,12 @@ nav a:hover {
     background-color: white;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    transition: margin-left 0.3s ease;
 }
 
+.container.collapsed {
+    margin-left: 220px; /* Adjust content when sidebar is collapsed */
+}
 
 h2 {
     color: #333;
@@ -130,6 +186,11 @@ header {
     margin-top: 20px;
     margin-bottom: 30px;
     border-radius: 8px;
+    transition: margin-left 0.3s ease;
+}
+
+header.collapsed {
+    margin-left: 220px;
 }
 
 h1 {
@@ -139,7 +200,11 @@ h1 {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    #menu-icon {
+        left: 10px; /* Stay in the same position */
+    }
     nav {
+        transform: translateX(-230px); /* Hide sidebar by default */
         font-size: 14px;
     }
     
@@ -147,8 +212,14 @@ h1 {
         font-size: 28px;
     }
     
-    .container {
-        width: 95%;
+    header, .container {
+        margin-left: 0;
+        /* width: 95%; */
+    }
+
+    .container,
+    header {
+        margin-left: 40px;
     }
 }
 

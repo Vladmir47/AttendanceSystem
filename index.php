@@ -7,9 +7,13 @@
     <title>Student Attendance System</title>
 </head>
 <body>
-
+<div id="menu-icon" class="menu-container" onclick="toggleSidebar(this)">
+    <div class="bar bar1"></div>
+    <div class="bar bar2"></div>
+    <div class="bar bar3"></div>
+</div>
 <!-- Navigation Bar -->
-    <nav>
+    <nav id="sidebar" class="sidebar">
         <a class="active" href="index.php">Home</a>
         <a href="create_class.php">Create Class</a>
         <a href="add_student.php">Add Student</a>
@@ -28,6 +32,6 @@
     <h2>Welcome to the Attendance Management System</h2>
     <p>This system helps manage student attendance and generate reports efficiently. Select an option from the navigation menu to get started.</p>
 </div>
-
+<script src="assets/js/script.js"></script>
 </body>
 </html>

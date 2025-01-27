@@ -39,3 +39,18 @@ function showNotification(message, type) {
         notification.className = "notification"; // Reset to default
     }, 3000);
 }
+
+function toggleSidebar(icon) {
+    const sidebar = document.getElementById('sidebar');
+    const header = document.querySelector('header');
+    const container = document.querySelector('.container');
+
+    // Toggle the collapsed state for sidebar, header, and container
+    sidebar.classList.toggle('collapsed');
+    header.classList.toggle('collapsed');
+    container.classList.toggle('collapsed');
+
+    // Toggle the menu icon animation to indicate open/close state
+    icon.classList.toggle('open');
+}
+

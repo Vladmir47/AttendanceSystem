@@ -6,7 +6,12 @@
     <script src="assets/js/script.js"></script>
 </head>
 <body>
-<nav>
+<div id="menu-icon" class="menu-container" onclick="toggleSidebar(this)">
+    <div class="bar bar1"></div>
+    <div class="bar bar2"></div>
+    <div class="bar bar3"></div>
+</div>
+<nav id="sidebar" class="sidebar">
     <a href="index.php">Home</a>
     <a class="active" href="create_class.php">Create class</a>
     <a href="add_student.php">Add Student</a>
@@ -20,11 +25,13 @@
 <header>
     <h1>Create a New Class</h1>
 </header>
+<div class="container">
     <form method="POST" action="create_class.php">
         <label for="class_name">Class Name:</label>
         <input type="text" id="class_name" name="class_name" required><br>
         <button type="submit">Create Class</button>
     </form>
+</div>
 
     <?php
 include 'db.php';

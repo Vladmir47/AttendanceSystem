@@ -7,7 +7,12 @@
     <title>Mark Attendance</title>
 </head>
 <body>
-<nav>
+<div id="menu-icon" class="menu-container" onclick="toggleSidebar(this)">
+    <div class="bar bar1"></div>
+    <div class="bar bar2"></div>
+    <div class="bar bar3"></div>
+</div>
+<nav id="sidebar" class="sidebar">
     <a href="index.php">Home</a>
     <a href="create_class.php">Create class</a>
     <a href="add_student.php">Add Student</a>
@@ -19,7 +24,7 @@
     <h1>Mark attendance</h1>
 </header>
 <div class="container">
-    <h1>Mark Attendance</h1>
+    <h2>Mark Attendance</h2>
 
     <!-- Class Selection Form -->
     <form method="GET" action="">
@@ -198,6 +203,6 @@ if (isset($_POST['submit_attendance'])) {
     }
     ?>
 </div>
-
+<script src="assets/js/script.js"></script>
 </body>
 </html>

@@ -8,7 +8,12 @@
     <script src="assets/js/script.js"></script>
 </head>
 <body>
-<nav>
+<div id="menu-icon" class="menu-container" onclick="toggleSidebar(this)">
+    <div class="bar bar1"></div>
+    <div class="bar bar2"></div>
+    <div class="bar bar3"></div>
+</div>
+<nav id="sidebar" class="sidebar">
     <a href="index.php">Home</a>
     <a href="create_class.php">Create class</a>
     <a href="add_student.php">Add Student</a>
