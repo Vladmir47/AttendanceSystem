@@ -30,7 +30,7 @@
 <!-- Main Content Section -->
 <div class="container">
     <h2>Welcome to the Attendance Management System</h2>
-    <p>This system helps manage student attendance and generate reports efficiently. Select an option from the navigation menu to get started.</p>
+    <p>This system helps manage student attendance and generate reports efficiently. Select an option from the sidebar menu to get started.</p>
 </div>
 <script src="assets/js/script.js"></script>
 </body>
