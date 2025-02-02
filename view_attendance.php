@@ -38,6 +38,7 @@
             <option value="All">All Students</option>
             <option value="class" <?= (isset($_GET['filter_type']) && $_GET['filter_type'] === 'class') ? 'selected' : '' ?>>Class</option>
             <option value="student" <?= (isset($_GET['filter_type']) && $_GET['filter_type'] === 'student') ? 'selected' : '' ?>>Student</option>
+            <option value="registration number" <?= (isset($_GET['filter_type']) && $_GET['filter_type'] === 'registration number') ? 'selected' : '' ?>>Registration number</option>
             <option value="date" <?= (isset($_GET['filter_type']) && $_GET['filter_type'] === 'date') ? 'selected' : '' ?>>Date</option>
         </select>
 
@@ -53,6 +54,7 @@
             <th>#</th>
             <th>Name</th>
             <th>Course</th>
+            <th>Reg No</th>
             <th>Class</th>
             <th>Classes Attended</th>
             <th>Total Classes</th>
@@ -61,7 +63,7 @@
         </tr>
         <?php
         // Initialize base query
-        $query = "SELECT students.id, students.name, students.course, classes.name AS class_name, 
+        $query = "SELECT students.id, students.name, students.course, students.registration_number, classes.name AS class_name, 
                          COUNT(CASE WHEN attendance.status = 'Present' THEN 1 END) AS classes_attended, 
                          COUNT(attendance.status) AS total_classes 
                   FROM students 
@@ -77,6 +79,8 @@
                 $query .= " WHERE classes.name LIKE '%$filter_value%'";
             } elseif ($filter_type === 'student') {
                 $query .= " WHERE students.name LIKE '%$filter_value%'";
+            }elseif ($filter_type === 'registration number') {
+                $query .= " WHERE students.registration_number LIKE '%$filter_value%'";
             } elseif ($filter_type === 'date') {
                 $query .= " WHERE attendance.date = '$filter_value'";
             }
@@ -102,6 +106,7 @@
                 <td>{$counter}</td>
                 <td>{$row['name']}</td>
                 <td>{$row['course']}</td>
+                <td>{$row['registration_number']}</td>
                 <td>{$row['class_name']}</td>
                 <td>{$row['classes_attended']}</td>
                 <td>{$row['total_classes']}</td>

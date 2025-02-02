@@ -25,10 +25,11 @@ if (isset($_GET['id'])) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
     $course = $_POST['course'];
+    $reg_number = $_POST['registration_number'];
 
     // Update the student details in the database
-    $update_query = $conn->prepare("UPDATE students SET name = ?, course = ? WHERE id = ?");
-    $update_query->bind_param("ssi", $name, $course, $student_id);
+    $update_query = $conn->prepare("UPDATE students SET name = ?, course = ?, registration_number = ? WHERE id = ?");
+    $update_query->bind_param("sssi", $name,  $course, $reg_number, $student_id);
 
     if ($update_query->execute()) {
         // Redirect to the view_students.php page with a success message
@@ -64,6 +65,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="form-group">
                 <label for="course">Course:</label>
                 <input type="text" id="course" name="course" value="<?php echo htmlspecialchars($student['course']); ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="registration number">Reg NO:</label>
+                <input type="text" id="registration_number" name="registration_number" value="<?php echo htmlspecialchars($student['registration_number']); ?>" required>
             </div>
             <button type="submit" class="btn">Update Student</button>
         </form>

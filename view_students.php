@@ -48,6 +48,7 @@
             <th>#</th>
             <th>Name</th>
             <th>Course</th>
+            <th>REG NO</th>
             <th>Class</th>
             <th>Action</th>
         </tr>
@@ -61,7 +62,7 @@
         }
 
         // Query to fetch students based on the filter
-        $sql = "SELECT students.id, students.name, students.course, classes.name AS class_name 
+        $sql = "SELECT students.id, students.name, students.course, students.registration_number, classes.name AS class_name 
                 FROM students
                 LEFT JOIN student_classes ON students.id = student_classes.student_id
                 LEFT JOIN classes ON student_classes.class_id = classes.id
@@ -77,6 +78,7 @@
                     <td>{$counter}</td>
                     <td>{$row['name']}</td>
                     <td>{$row['course']}</td>
+                    <td>{$row['registration_number']}</td>
                     <td>$class_name</td>
                     <td>
                         <a href='edit_student.php?id={$row['id']}'>Edit</a>

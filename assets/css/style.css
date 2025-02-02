@@ -45,7 +45,7 @@ nav {
     overflow-y: auto; /* Allow scrolling for long menus */
     padding: 10px 0;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-    transform: translateX(0); /* Initially visible */
+    transform: translateX(0px); /* Initially visible */
     transition: transform 0.3s ease;
 }
 
@@ -57,7 +57,7 @@ nav a {
     font-size: 16px;
 }
 
-.active,nav a:hover {
+.active {
     background-color: #c7df11ec;
     color: white;
   }
@@ -223,7 +223,8 @@ h1 {
 /* Notification container */
 .notification {
     padding: 10px;
-    margin: 10px 0;
+    margin-top: 10px;
+    margin-left: 250px;
     border-radius: 5px;
     font-size: 16px;
     color: #fff;

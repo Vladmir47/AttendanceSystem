@@ -28,6 +28,9 @@
     <form method="POST" onsubmit="return validateForm(this);">
         <label for="name">Student Name</label>
         <input type="text" name="name" id="name" required>
+
+        <label for="name">Registration Number</label>
+        <input type="text" name="registration_number" id="registration_number" required>
         
         <label for="course">Course</label>
         <input type="text" name="course" id="course" required>
@@ -53,6 +56,7 @@
         $name = trim($_POST['name']);
         $course = trim($_POST['course']);
         $class_id = $_POST['class_id'];
+        $reg_no =trim($_POST['registration_number']);
 
         // Check if the student already exists in the database
         $sql = "SELECT id FROM students WHERE name = '$name' AND course = '$course'";
@@ -80,7 +84,7 @@
             }
         } else {
             // Student does not exist, insert into the students table
-            $sql = "INSERT INTO students (name, course) VALUES ('$name', '$course')";
+            $sql = "INSERT INTO students (name, course, registration_number) VALUES ('$name', '$course', '$reg_no')";
             if ($conn->query($sql) === TRUE) {
                 $student_id = $conn->insert_id;
 
